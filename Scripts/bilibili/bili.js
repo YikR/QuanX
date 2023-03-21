@@ -1,4 +1,4 @@
-// 2023-03-06 12:35
+// 2023-03-21 19:00
 
 const url = $request.url;
 let obj = JSON.parse($response.body);
@@ -190,6 +190,12 @@ if (!$response.body) {
       // 开屏广告
       if (obj.data.show) {
         delete obj.data.show;
+      }
+      if (obj.data.event_list) {
+        obj.data.event_list = [];
+      }
+      if (obj.data.account) {
+        obj.data.account = {};
       }
     } else if (
       url.includes("/pgc/page/bangumi") ||
