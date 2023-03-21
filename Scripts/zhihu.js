@@ -1,4 +1,4 @@
-// 2023-03-15 09:10
+// 2023-03-21 10:11
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -146,7 +146,7 @@ if (url.includes("/appview/v3/zhmore")) {
             let videoID = str.substring(0, str.indexOf(","));
             i.common_card.feed_content.video.id = videoID;
           } else if (
-            i.common_card?.footline?.elements?.text?.panel_text?.includes(
+            i.common_card?.footline?.elements?.[0]?.text?.panel_text?.includes(
               "广告"
             )
           ) {
