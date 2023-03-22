@@ -1,4 +1,4 @@
-# 2023-03-16 22:10
+# 2023-03-22 11:15
 
 # ======= A ======= #
 # 安全浏览限制解除
@@ -6,10 +6,6 @@ HOST-SUFFIX, u3.ucweb.com, REJECT
 HOST-SUFFIX, safebrowsing.urlsec.qq.com, REJECT
 HOST-SUFFIX, safebrowsing.googleapis.com, REJECT
 HOST-SUFFIX, lookup.api.bsb.baidu.com, REJECT
-
-# ======= B ======= #
-# 哔哩哔哩
-IP-CIDR, 203.107.1.0/24, REJECT
 
 # ======= C ======= #
 # Clue 智库
@@ -26,6 +22,41 @@ HOST, googleads.g.doubleclick-cn.net, REJECT
 HOST, googleads.g.doubleclick.net, REJECT
 HOST, pubads.g.doubleclick.net, REJECT
 HOST, pagead2.googlesyndication.com, REJECT
+
+# ======= H ======= #
+# 常见的 HTTPDNS 服务器
+## 阿里
+HOST, httpdns.alicdn.com, REJECT
+## 阿里云
+HOST, httpdns-api.aliyuncs.com, REJECT
+IP-CIDR, 203.107.1.1/32, REJECT
+## 百度
+HOST, httpsdns.baidu.com, REJECT
+HOST, httpdns.baidu.com, REJECT
+## 百度云
+HOST, httpdns.baidubce.com, REJECT
+IP-CIDR, 186.76.76.200/32, REJECT
+## 新浪
+HOST, dns.weibo.cn, REJECT
+HOST, httpdns.sina.cn, REJECT
+HOST, httpdns.sina.com.cn, REJECT
+HOST, httpdns.c.sina.cn, REJECT
+HOST, httpdns.c.sina.com.cn, REJECT
+## 网易
+HOST, httpdns.n.netease.com, REJECT
+HOST, music.httpdns.c.163.com, REJECT
+IP-CIDR, 59.111.239.61/32, REJECT
+IP-CIDR, 59.111.239.62/32, REJECT
+## 微信
+HOST, dns.weixin.qq.com, REJECT
+HOST, dns.weixin.qq.com.cn, REJECT
+IP-CIDR, 42.81.232.18/32, REJECT
+IP-CIDR, 42.187.182.106/32, REJECT
+IP-CIDR, 42.187.182.123/32, REJECT
+IP-CIDR, 42.187.184.154/32, REJECT
+IP-CIDR, 123.151.54.50/32, REJECT
+IP6-CIDR, 2402:4e00:1900:1700:0:9554:1ad9:c3a/128, REJECT
+IP6-CIDR, 240e:928:1400:10::25/128, REJECT
 
 # ======= G ======= #
 # 高德地图
@@ -80,8 +111,6 @@ HOST-SUFFIX, shuzilm.cn, REJECT
 # ======= T ======= #
 # 腾讯 无法使用的推送服务
 HOST, tpns.qq.com, REJECT
-# 贴吧
-IP-CIDR, 180.76.76.200/32, REJECT
 
 # ======= W ======= #
 # 网易云音乐
