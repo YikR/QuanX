@@ -1,4 +1,4 @@
-# 2023-03-22 11:15
+# 2023-03-22 15:40
 
 # ======= A ======= #
 # 安全浏览限制解除
@@ -99,6 +99,7 @@ HOST, sin3-ib.adnxs.com, REJECT
 
 # ======= R ======= #
 # RARBG 推广跳转
+HOST, bravetense.com, REJECT
 HOST, furiousfar.com, REJECT
 HOST, swallowcrockerybless.com, REJECT
 
