@@ -1,4 +1,4 @@
-// 2023-03-25 23:40
+// 2023-03-26 00:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -378,6 +378,9 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (!checkSearchWindow(item)) {
               newItems.push(item);
             }
+          } else if (item.category === "cell") {
+            // 保留信息流分割线
+            newItems.push(item);
           }
         }
         obj.items = newItems;
@@ -413,6 +416,9 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   if (!checkSearchWindow(item)) {
                     newItems.push(item);
                   }
+                } else if (item.category === "cell") {
+                  // 保留信息流分割线
+                  newItems.push(item);
                 }
               }
               payload.items = newItems;
@@ -656,8 +662,7 @@ function checkSearchWindow(item) {
     item.data?.card_type === 217 ||
     item.data?.card_type === 1005 ||
     item.data?.itemid === "more_frame" ||
-    item.data?.mblog?.page_info?.actionlog?.source?.includes("ad") ||
-    item.data?.title === "微博热搜"
+    item.data?.mblog?.page_info?.actionlog?.source?.includes("ad")
   ) {
     return true;
   }
