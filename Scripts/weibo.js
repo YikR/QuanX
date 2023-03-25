@@ -1,4 +1,4 @@
-// 2023-03-26 00:45
+// 2023-03-26 07:55
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -82,6 +82,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                 continue;
               }
             }
+            // 搜索框 我的热搜 查看更多热搜
+            if ([4, 6, 101].indexOf(cardType) !== -1) {
+              continue;
+            }
             if (group.mblog) {
               // 移除卡片挂件,关注按钮
               removeAvatar(group.mblog);
@@ -104,6 +108,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         }
       }
       obj.cards = newCards;
+    }
+    // 我的热搜
+    if (obj.cardlistInfo?.page_type === "08") {
+      delete obj.cardlistInfo;
     }
   } else if (url.includes("/2/checkin/show")) {
     // 首页签到
