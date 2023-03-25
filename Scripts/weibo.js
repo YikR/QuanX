@@ -1,4 +1,4 @@
-// 2023-03-25 18:40
+// 2023-03-25 23:23
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -426,7 +426,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               removeAvatar(group.mblog);
             }
             let cardType = group.card_type;
-            if (cardType !== 118) {
+            // 22信息流横版广告图
+            if ([22, 118].indexOf(cardType) === -1) {
               if (!isAd(group.mblog)) {
                 // 商品橱窗
                 if (group.mblog?.common_struct) {
@@ -604,6 +605,9 @@ function isAd(data) {
       return true;
     }
     if (data.promotion?.type === "ad") {
+      return true;
+    }
+    if (data.readtimetype === "adMblog") {
       return true;
     }
   }
