@@ -1,4 +1,4 @@
-// 2023-03-25 17:25
+// 2023-03-25 17:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -410,6 +410,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                   if (!isAd(item.data)) {
                     // 头像挂件,关注按钮
                     removeAvatar(item.data);
+                    // 移除信息流中的热评
+                    if (item.data?.comment_summary) {
+                      delete item.data.comment_summary;
+                    }
                     newItems.push(item);
                   }
                 } else if (item.category === "card") {
