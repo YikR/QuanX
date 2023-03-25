@@ -1,4 +1,4 @@
-// 2023-03-25 23:23
+// 2023-03-25 23:40
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -82,6 +82,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
                 continue;
               }
             }
+            if (group.mblog) {
+              // 移除卡片挂件,关注按钮
+              removeAvatar(group.mblog);
+            }
             newGroup.push(group);
           }
           card.card_group = newGroup;
@@ -91,6 +95,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           // 17猜你想搜 58搜索偏好设置
           if ([17, 58].indexOf(cardType) !== -1) {
             continue;
+          }
+          if (card.mblog) {
+            // 移除 卡片挂件,关注按钮
+            removeAvatar(card.mblog);
           }
           newCards.push(card);
         }
