@@ -1,4 +1,4 @@
-// 2023-03-26 17:20
+// 2023-03-26 17:25
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -116,6 +116,10 @@ if (url.includes("/appview/v3/zhmore")) {
           return false;
         }
       });
+    }
+  } else if (url.includes("/root/window")) {
+    if (obj.guide) {
+      obj.guide = {};
     }
   } else if (url.includes("/topstory/recommend")) {
     // 推荐信息流
