@@ -1,4 +1,4 @@
-// 2023-03-21 19:00
+// 2023-03-27 08:40
 
 const url = $request.url;
 let obj = JSON.parse($response.body);
@@ -15,37 +15,15 @@ if (!$response.body) {
     } else if (url.includes("/x/resource/show/tab/v2")) {
       // 标签页
       if (obj.data.tab) {
-        obj.data.tab = [
-          {
-            id: 41,
-            tab_id: "hottopic",
-            name: "热门",
-            uri: "bilibili://pegasus/hottopic",
-            pos: 1
-          },
-          {
-            id: 40,
-            tab_id: "推荐tab",
-            default_selected: 1,
-            name: "推荐",
-            uri: "bilibili://pegasus/promo",
-            pos: 2
-          },
-          {
-            id: 151,
-            tab_id: "film",
-            name: "影视",
-            uri: "bilibili://pgc/cinema-tab",
-            pos: 3
-          },
-          {
-            id: 545,
-            tab_id: "bangumi",
-            name: "动画",
-            uri: "bilibili://pgc/home",
-            pos: 4
-          }
-        ];
+        obj.data.tab =
+          obj.data.tab = obj.data.tab.filter(
+            (item) =>
+              item.name === "推荐" ||
+              item.name === "热门" ||
+              item.name === "动画" ||
+              item.name === "影视"
+          );
+        fixPos(obj.data.tab);
       }
       if (obj.data.top) {
         obj.data.top = [
