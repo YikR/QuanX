@@ -1,5 +1,5 @@
 # ======= 知乎 ======= #
-# 2023-03-26 17:25
+# 2023-03-27 09:02
 
 # 首页 悬浮图标,顶部横幅,开屏广告,关注页推荐,推荐信息流,热榜信息流,热榜直播,回答底部卡片
 ^https:\/\/api\.zhihu\.com\/commercial_api\/app_float_layer$ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/zhihu.js
@@ -7,7 +7,7 @@
 ^https:\/\/api\.zhihu\.com\/content-distribution-core\/bubble\/common\/settings$ url reject-dict
 ^https:\/\/api\.zhihu\.com\/(moments\/lastread|drama\/hot-drama-list)$ url reject-dict
 ^https:\/\/api\.zhihu\.com\/(moments_v3|topstory\/recommend(_v2)?)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/zhihu.js
-^https:\/\/api\.zhihu\.com\/root\/window$ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/zhihu.js
+;^https:\/\/api\.zhihu\.com\/root\/window$ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/zhihu.js
 ^https:\/\/api\.zhihu\.com\/v2\/topstory\/hot-lists\/everyone-seeing\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/zhihu.js
 
 # 我的页面 项目列表,会员卡片,更多卡片
