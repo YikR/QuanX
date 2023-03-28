@@ -1,5 +1,5 @@
 # ======= 高德地图 ======= #
-# 2023-03-16 22:10
+# 2023-03-28 15:25
 
 # 其他
 ^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch$ url reject-dict
@@ -11,7 +11,7 @@
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/new_hotword\? url reject-dict
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search\/poi\/detail\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
 ^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(city_feed|tips_adv)\? url reject-dict
-^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/tips_operation_location\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
+^https:\/\/m5\.amap\.com\/ws\/shield\/search_poi\/(search\/sp|tips_operation_location)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
 
 # 首页,卡片,红点角标,右上角动图,搜索框热词,左下角天气,天气动效图层,消息横幅
 ^https:\/\/m5\.amap\.com\/ws\/faas\/amap-navigation\/main-page\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/amap.js
