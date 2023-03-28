@@ -1,4 +1,4 @@
-// 2023-03-18 12:25
+// 2023-03-28 15:05
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -182,7 +182,7 @@ if (url.includes("/faas/amap-navigation/main-page")) {
     // "events",
     "everyOneToSee", // 大家还在看
     "feedback", // 问题反馈
-    // "first_surround_estate_tab",
+    "first_surround_estate_tab", // 周边小区
     // "footer_logo",
     // "foreclosurehouse",
     // "gallery_info", // 现场照片
@@ -270,7 +270,7 @@ if (url.includes("/faas/amap-navigation/main-page")) {
     // "scenic_ticket", // 购票
     // "scenic_ticket_activity", // 购票活动
     "scenic_voice", // 语音讲解 付费的项目
-    "second_surround_estate_tab",
+    "second_surround_estate_tab", // 周边房产
     // "service_shop",
     // "shop_news",
     "smallListBizRec", // 周边热门酒店
