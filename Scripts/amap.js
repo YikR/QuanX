@@ -1,4 +1,4 @@
-// 2023-03-28 15:05
+// 2023-03-28 15:40
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -52,9 +52,6 @@ if (url.includes("/faas/amap-navigation/main-page")) {
       list.bottom.taxi_button = 0;
     }
     // 底栏 酒店
-    if (list?.bottom?.bottombar_button?.hotel) {
-      delete list.bottom.bottombar_button.hotel;
-    }
     if (list?.map_bottom_bar?.hotel) {
       delete list.map_bottom_bar.hotel;
     }
@@ -63,6 +60,9 @@ if (url.includes("/faas/amap-navigation/main-page")) {
     }
     if (list?.tips_operation_info) {
       delete list.tips_operation_info;
+    }
+    if (list?.bottom?.bottombar_button?.hotel) {
+      delete list.bottom.bottombar_button.hotel;
     }
     // 底栏 打车
     if (list?.bottom?.bottombar_button?.takeCar) {
@@ -292,6 +292,33 @@ if (url.includes("/faas/amap-navigation/main-page")) {
     item.forEach((i) => {
       delete obj.data.modules[i];
     });
+  }
+} else if (url.includes("/shield/search_poi/search/sp")) {
+  if (obj.data.list_data) {
+    let list = obj.data.list_data.content[0];
+    // 详情页 底部 房产推广
+    if (list?.hookInfo) {
+      let hookData = list.hookInfo.data;
+      if (hookData?.header) {
+        delete hookData.header;
+      }
+      if (hookData?.house_info) {
+        delete hookData.house_info;
+      }
+    }
+    // 详情页 底部 订酒店
+    if (list?.map_bottom_bar?.hotel) {
+      delete list.map_bottom_bar.hotel;
+    }
+    if (list?.poi?.item_info?.tips_bottombar_button?.hotel) {
+      delete list.poi.item_info.tips_bottombar_button.hotel;
+    }
+    if (list?.tips_operation_info) {
+      delete list.tips_operation_info;
+    }
+    if (list?.bottom?.bottombar_button?.hotel) {
+      delete list.bottom.bottombar_button.hotel;
+    }
   }
 } else if (url.includes("/shield/search_poi/tips_operation_location")) {
   // 搜索页面 底部结果上方窄横幅
