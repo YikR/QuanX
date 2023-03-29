@@ -1,4 +1,4 @@
-// 2023-03-27 08:40
+// 2023-03-29 19:20
 
 const url = $request.url;
 let obj = JSON.parse($response.body);
@@ -15,14 +15,13 @@ if (!$response.body) {
     } else if (url.includes("/x/resource/show/tab/v2")) {
       // 标签页
       if (obj.data.tab) {
-        obj.data.tab =
-          obj.data.tab = obj.data.tab.filter(
-            (item) =>
-              item.name === "推荐" ||
-              item.name === "热门" ||
-              item.name === "动画" ||
-              item.name === "影视"
-          );
+        obj.data.tab = obj.data.tab.filter(
+          (item) =>
+            item.name === "推荐" ||
+            item.name === "热门" ||
+            item.name === "动画" ||
+            item.name === "影视"
+        );
         fixPos(obj.data.tab);
       }
       if (obj.data.top) {
@@ -93,7 +92,7 @@ if (!$response.body) {
           obj.data.live_tip = "";
           obj.data.answer = "";
           // 开启本地会员标识
-          if (obj.data.vip.status) {
+          if (obj.data.vip.status === 1) {
             return false;
           } else {
             obj.data.vip_type = 2;
@@ -101,6 +100,7 @@ if (!$response.body) {
             obj.data.vip.status = 1;
             obj.data.vip.vip_pay_type = 1;
             obj.data.vip.due_date = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
+            obj.data.vip.role = 3;
           }
         });
       }
@@ -113,6 +113,7 @@ if (!$response.body) {
         obj.data.vip.status = 1;
         obj.data.vip.vip_pay_type = 1;
         obj.data.vip.due_date = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
+        obj.data.vip.role = 3;
       }
     } else if (url.includes("/x/v2/feed/index")) {
       // 推荐广告
