@@ -1,4 +1,4 @@
-// 2023-03-29 19:20
+// 2023-03-29 19:35
 
 const url = $request.url;
 let obj = JSON.parse($response.body);
@@ -106,7 +106,7 @@ if (!$response.body) {
       }
     } else if (url.includes("/x/v2/account/myinfo")) {
       // 会员清晰度
-      if (obj.data.vip.status) {
+      if (obj.data.vip.status === 1) {
         $done({});
       } else {
         obj.data.vip.type = 2;
