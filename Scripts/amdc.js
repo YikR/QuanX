@@ -5,7 +5,7 @@ const header = $request.headers;
 let ua = header["User-Agent"] || header["user-agent"];
 
 if (url.includes("/amdc/mobileDispatch")) {
-  if (ua.includes("AMap") || ua.includes("Cainiao")) {
+  if (ua.includes("AMapiPhone") || ua.includes("Cainiao")) {
     $done({ status: "HTTP/1.1 404 Not Found" });
     return;
   }
