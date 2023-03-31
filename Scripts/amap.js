@@ -1,4 +1,4 @@
-// 2023-03-28 18:15
+// 2023-03-31 15:52
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -109,9 +109,10 @@ if (url.includes("/faas/amap-navigation/main-page")) {
   if (obj.data.tipData) {
     delete obj.data.tipData;
   }
-  if (obj.data.footPrintV2) {
-    delete obj.data.footPrintV2;
-  }
+  // 足迹
+  // if (obj.data.footPrintV2) {
+  //   delete obj.data.footPrintV2;
+  // }
   // 成就勋章 lv1见习达人
   if (obj.data.memberInfo) {
     delete obj.data.memberInfo;
