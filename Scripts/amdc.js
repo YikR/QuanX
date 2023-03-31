@@ -3,7 +3,7 @@
 const url = $request.url;
 const header = $request.headers;
 
-if ("undefined" !== typeof $task) {
+if (typeof $task !== "undefined") {
   let ua = header["User-Agent"];
   if (ua.includes("AMap") || ua.includes("Cainiao")) {
     $done({ status: "HTTP/1.1 404 Not Found" });
