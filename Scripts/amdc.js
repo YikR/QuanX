@@ -1,20 +1,15 @@
-// 2023-03-31 12:32
+// 2023-03-31 15:08
 
 const url = $request.url;
 const header = $request.headers;
+let ua = header["User-Agent"] || header["user-agent"];
 
-if (typeof $task !== "undefined") {
-  let ua = header["User-Agent"];
-  if (ua.includes("AMap") || ua.includes("Cainiao")) {
+if (ua.includes("AMap") || ua.includes("Cainiao")) {
+  if (typeof $task !== "undefined") {
     $done({ status: "HTTP/1.1 404 Not Found" });
   } else {
-    $done({});
+    $done();
   }
 } else {
-  let ua = header["user-agent"];
-  if (ua.includes("AMap") || ua.includes("Cainiao")) {
-    $done();
-  } else {
-    $done({});
-  }
+  $done({});
 }
