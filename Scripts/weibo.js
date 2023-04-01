@@ -1,4 +1,4 @@
-// 2023-04-01 09:22
+// 2023-04-01 17:05
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -215,6 +215,19 @@ if (url.includes("/interface/sdk/sdkad.php")) {
           }
         }
         obj.root_comments = newItems;
+      }
+    } else if (obj.comments) {
+      let items = obj.comments;
+      if (items.length > 0) {
+        let newItems = [];
+        for (let item of items) {
+          if (item.user) {
+            // 头像挂件,关注按钮
+            removeAvatar(item);
+          }
+          newItems.push(item);
+        }
+        obj.comments = newItems;
       }
     }
   } else if (url.includes("/2/container/asyn")) {
