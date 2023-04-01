@@ -1,4 +1,4 @@
-// 2023-04-01 09:15
+// 2023-04-01 09:20
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -449,8 +449,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               removeAvatar(group.mblog);
             }
             let cardType = group.card_type;
-            // 22信息流横版广告图 25超话卡片(单个) 182超话卡片(多个)
-            if (![22, 25, 118, 182].includes(cardType)) {
+            // 22信息流横版广告图 25超话卡片(单个) 42正在热搜 182超话卡片(多个)
+            if (![22, 25, 42, 118, 182].includes(cardType)) {
               if (!isAd(group.mblog)) {
                 // 商品橱窗
                 if (group.mblog?.common_struct) {
