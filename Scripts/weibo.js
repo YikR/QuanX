@@ -1,4 +1,4 @@
-// 2023-04-01 17:20
+// 2023-04-01 23:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -167,9 +167,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (
               item?.adType === "相关内容" ||
               item?.adType === "相关评论" ||
-              item?.adType === "推荐" ||
-              item?.type === 6 ||
-              item?.type === 15
+              item?.adType === "推荐"
             ) {
               continue;
             }
