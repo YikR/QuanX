@@ -1,11 +1,14 @@
-# 2023-03-22 15:40
+# 2023-04-01 15:40
 
 # ======= A ======= #
 # 安全浏览限制解除
-HOST-SUFFIX, u3.ucweb.com, REJECT
-HOST-SUFFIX, safebrowsing.urlsec.qq.com, REJECT
-HOST-SUFFIX, safebrowsing.googleapis.com, REJECT
-HOST-SUFFIX, lookup.api.bsb.baidu.com, REJECT
+HOST, lookup.api.bsb.baidu.com, REJECT
+HOST, proxy.safebrowsing.apple, REJECT
+HOST, safebrowsing.g.applimg.com, REJECT
+HOST, safebrowsing.googleapis.com, REJECT
+HOST, safebrowsing.urlsec.qq.com, REJECT
+HOST, token.safebrowsing.apple, REJECT
+HOST, u3.ucweb.com, REJECT
 
 # ======= C ======= #
 # Clue 智库
