@@ -1,5 +1,5 @@
 # ======= 哔哩哔哩 ======= #
-# 2023-03-21 19:00
+# 2023-03-30 07:18
 
 # Proto 动态广告,后台播放限制,播放页广告 //app.bilibili.com
 ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/biliProto.js
@@ -15,7 +15,7 @@
 ^https:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v1\/ecommerce-user\/get_shopping_info\? url reject-dict
 
 # 开屏广告 //app.bilibili.com
-^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(event\/list2|list|show)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/bili.js
+^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(brand\/list|event\/list2|list|show)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/bili.js
 
 # 我的页面 解锁1080P高码率,4K画质,皮肤推送 //app.bilibili.com
 ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine|myinfo)\? url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/bilibili/bili.js

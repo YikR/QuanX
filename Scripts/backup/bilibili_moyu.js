@@ -2,26 +2,26 @@
 > 应用名称：墨鱼自用B站去广告脚本
 > 脚本作者：@ddgksf2013
 > 微信账号：墨鱼手记
-> 更新时间：2023-03-05
+> 更新时间：2023-03-31
 > 通知频道：https://t.me/ddgksf2021
 > 贡献投稿：https://t.me/ddgksf2013_bot
 > 问题反馈：ddgksf2013@163.com
 > 特别提醒：如需转载请注明出处，谢谢合作！
 ***********************************************/
 
-const version = "V2.0.112";
+const version = "V2.0.114";
 
 let body = $response.body;
 if (body) {
   switch (!0) {
     case /pgc\/season\/app\/related\/recommend\?/.test($request.url):
       try {
-        let t = JSON.parse(body);
-        t.result?.cards?.length > 0 &&
-          (t.result.cards = t.result.cards.filter((t) => 2 != t.type)),
-          (body = JSON.stringify(t));
-      } catch (i) {
-        console.log("bilibili recommend:" + i);
+        let i = JSON.parse(body);
+        i.result?.cards?.length > 0 &&
+          (i.result.cards = i.result.cards.filter((i) => 2 != i.type)),
+          (body = JSON.stringify(i));
+      } catch (t) {
+        console.log("bilibili recommend:" + t);
       }
       break;
     case /^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\?/.test(
@@ -65,13 +65,13 @@ if (body) {
       $request.url
     ):
       try {
-        let r = JSON.parse(body),
-          b = [];
-        for (let p of r.data.items)
+        let b = JSON.parse(body),
+          r = [];
+        for (let p of b.data.items)
           p.hasOwnProperty("ad_info") ||
             -1 !== p.card_goto.indexOf("ad") ||
-            b.push(p);
-        (r.data.items = b), (body = JSON.stringify(r));
+            r.push(p);
+        (b.data.items = r), (body = JSON.stringify(b));
       } catch (c) {
         console.log("bilibili Story:" + c);
       }
@@ -82,56 +82,95 @@ if (body) {
       try {
         let n = JSON.parse(body);
         (n.data.teenagers_status = 0), (body = JSON.stringify(n));
-      } catch (y) {
-        console.log("bilibili teenagers:" + y);
+      } catch (u) {
+        console.log("bilibili teenagers:" + u);
       }
       break;
     case /^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab/.test(
       $request.url
     ):
       try {
-        let u = new Set([177, 178, 179, 181, 102, 104, 106, 486, 488, 489]),
+        let y = new Set([177, 178, 179, 181, 102, 104, 106, 486, 488, 489]),
           f = JSON.parse(body);
         if (
           (f.data?.tab &&
-            (f.data.tab = [
-              {
-                id: 39,
-                name: "直播",
-                uri: "bilibili://live/home",
-                tab_id: "直播tab",
-                pos: 1
-              },
-              {
-                id: 40,
-                name: "推荐",
-                uri: "bilibili://pegasus/promo",
-                tab_id: "推荐tab",
-                pos: 2,
-                default_selected: 1
-              },
-              {
-                id: 41,
-                name: "热门",
-                uri: "bilibili://pegasus/hottopic",
-                tab_id: "hottopic",
-                pos: 3
-              },
-              {
-                id: 545,
-                name: "番剧",
-                uri: "bilibili://pgc/home",
-                tab_id: "bangumi",
-                pos: 4
-              },
-              {
-                id: 151,
-                name: "影视",
-                uri: "bilibili://pgc/cinema-tab",
-                tab_id: "film",
-                pos: 5
-              }
-            ]),
+            (-1 == JSON.stringify(f.data.tab).indexOf("pgc/home")
+              ? (f.data.tab = [
+                  {
+                    id: 39,
+                    name: "直播",
+                    uri: "bilibili://live/home",
+                    tab_id: "直播tab",
+                    pos: 1
+                  },
+                  {
+                    id: 40,
+                    name: "推荐",
+                    uri: "bilibili://pegasus/promo",
+                    tab_id: "推荐tab",
+                    pos: 2,
+                    default_selected: 1
+                  },
+                  {
+                    id: 41,
+                    name: "热门",
+                    uri: "bilibili://pegasus/hottopic",
+                    tab_id: "hottopic",
+                    pos: 3
+                  },
+                  {
+                    id: 774,
+                    name: "番剧",
+                    uri: "bilibili://following/home_activity_tab/6544",
+                    tab_id: "bangumi",
+                    pos: 4
+                  },
+                  {
+                    id: 151,
+                    name: "影视",
+                    uri: "bilibili://pgc/cinema-tab",
+                    tab_id: "film",
+                    pos: 5
+                  }
+                ])
+              : (f.data.tab = [
+                  {
+                    id: 39,
+                    name: "直播",
+                    uri: "bilibili://live/home",
+                    tab_id: "直播tab",
+                    pos: 1
+                  },
+                  {
+                    id: 40,
+                    name: "推荐",
+                    uri: "bilibili://pegasus/promo",
+                    tab_id: "推荐tab",
+                    pos: 2,
+                    default_selected: 1
+                  },
+                  {
+                    id: 41,
+                    name: "热门",
+                    uri: "bilibili://pegasus/hottopic",
+                    tab_id: "hottopic",
+                    pos: 3
+                  },
+                  {
+                    id: 545,
+                    name: "番剧",
+                    uri: "bilibili://pgc/home",
+                    tab_id: "bangumi",
+                    pos: 4
+                  },
+                  {
+                    id: 151,
+                    name: "影视",
+                    uri: "bilibili://pgc/cinema-tab",
+                    tab_id: "film",
+                    pos: 5
+                  }
+                ])),
           f.data.top &&
             (f.data.top = [
               {
@@ -145,12 +184,12 @@ if (body) {
             ]),
           f.data.bottom)
         ) {
-          let h = f.data.bottom.filter((t) => u.has(t.id));
-          f.data.bottom = h;
+          let m = f.data.bottom.filter((i) => y.has(i.id));
+          f.data.bottom = m;
         }
         body = JSON.stringify(f);
-      } catch (m) {
-        console.log("bilibili tabprocess:" + m);
+      } catch (h) {
+        console.log("bilibili tabprocess:" + h);
       }
       break;
     case /^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine/.test(
@@ -162,17 +201,17 @@ if (body) {
             396, 397, 398, 399, 407, 410, 402, 404, 425, 426, 427, 428, 430,
             432, 433, 434, 494, 495, 496, 497, 500, 501
           ]);
-        g.data.sections_v2.forEach((t, i) => {
-          let a = t.items.filter((t) => v.has(t.id));
-          (g.data.sections_v2[i].items = a),
-            (g.data.sections_v2[i].button = {}),
-            delete g.data.sections_v2[i].be_up_title,
-            delete g.data.sections_v2[i].tip_icon,
-            delete g.data.sections_v2[i].tip_title,
-            ("创作中心" == g.data.sections_v2[i].title ||
-              "創作中心" == g.data.sections_v2[i].title) &&
-              (delete g.data.sections_v2[i].title,
-              delete g.data.sections_v2[i].type);
+        g.data.sections_v2.forEach((i, t) => {
+          let a = i.items.filter((i) => v.has(i.id));
+          (g.data.sections_v2[t].items = a),
+            (g.data.sections_v2[t].button = {}),
+            delete g.data.sections_v2[t].be_up_title,
+            delete g.data.sections_v2[t].tip_icon,
+            delete g.data.sections_v2[t].tip_title,
+            ("创作中心" == g.data.sections_v2[t].title ||
+              "創作中心" == g.data.sections_v2[t].title) &&
+              (delete g.data.sections_v2[t].title,
+              delete g.data.sections_v2[t].type);
         }),
           delete g.data.vip_section_v2,
           delete g.data.vip_section,
@@ -185,22 +224,22 @@ if (body) {
             (g.data.vip.vip_pay_type = 1),
             (g.data.vip.due_date = 466982416e4)),
           (body = JSON.stringify(g));
-      } catch ($) {
-        console.log("bilibili mypage:" + $);
+      } catch (_) {
+        console.log("bilibili mypage:" + _);
       }
       break;
     case /^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom/.test(
       $request.url
     ):
       try {
-        let _ = JSON.parse(body);
-        (_.data.activity_banner_info = null),
-          _.data?.shopping_info && (_.data.shopping_info = { is_show: 0 }),
-          _.data?.new_tab_info?.outer_list &&
-            _.data.new_tab_info.outer_list.length &&
-            (_.data.new_tab_info.outer_list =
-              _.data.new_tab_info.outer_list.filter((t) => 33 != t.biz_id)),
-          (body = JSON.stringify(_));
+        let $ = JSON.parse(body);
+        ($.data.activity_banner_info = null),
+          $.data?.shopping_info && ($.data.shopping_info = { is_show: 0 }),
+          $.data?.new_tab_info?.outer_list &&
+            $.data.new_tab_info.outer_list.length &&
+            ($.data.new_tab_info.outer_list =
+              $.data.new_tab_info.outer_list.filter((i) => 33 != i.biz_id)),
+          (body = JSON.stringify($));
       } catch (x) {
         console.log("bilibili live broadcast:" + x);
       }
@@ -265,15 +304,15 @@ if (body) {
     case /pgc\/page\/(bangumi|cinema\/tab\?)/.test($request.url):
       try {
         let z = JSON.parse(body);
-        z.result.modules.forEach((t) => {
-          t.style.startsWith("banner") &&
-            (t.items = t.items.filter((t) => -1 != t.link.indexOf("play"))),
-            t.style.startsWith("function") &&
-              ((t.items = t.items.filter(
-                (t) => -1 == t.blink.indexOf("bilibili.com")
+        z.result.modules.forEach((i) => {
+          i.style.startsWith("banner") &&
+            (i.items = i.items.filter((i) => -1 != i.link.indexOf("play"))),
+            i.style.startsWith("function") &&
+              ((i.items = i.items.filter(
+                (i) => -1 == i.blink.indexOf("bilibili.com")
               )),
-              [1283, 241, 1441, 1284].includes(t.module_id) && (t.items = [])),
-            t.style.startsWith("tip") && (t.items = []);
+              [1283, 241, 1441, 1284].includes(i.module_id) && (i.items = [])),
+            i.style.startsWith("tip") && (i.items = []);
         }),
           (body = JSON.stringify(z));
       } catch (B) {
@@ -303,7 +342,7 @@ if (body) {
         T.data &&
           T.data.card_list &&
           (T.data.card_list = T.data.card_list.filter(
-            (t) => "banner_v1" != t.card_type
+            (i) => "banner_v1" != i.card_type
           )),
           (body = JSON.stringify(T));
       } catch (A) {

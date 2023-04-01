@@ -1,4 +1,4 @@
-// 2023-03-29 12:50
+// 2023-04-01 09:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -83,7 +83,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               }
             }
             // 搜索框 我的热搜 查看更多热搜
-            if ([4, 6, 101].indexOf(cardType) !== -1) {
+            if ([4, 6, 101].includes(cardType)) {
               continue;
             }
             if (group.mblog) {
@@ -97,7 +97,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         } else {
           let cardType = card.card_type;
           // 17猜你想搜 58搜索偏好设置
-          if ([17, 58].indexOf(cardType) !== -1) {
+          if ([17, 58].includes(cardType)) {
             continue;
           }
           if (card.mblog) {
@@ -449,8 +449,8 @@ if (url.includes("/interface/sdk/sdkad.php")) {
               removeAvatar(group.mblog);
             }
             let cardType = group.card_type;
-            // 22信息流横版广告图
-            if ([22, 118].indexOf(cardType) === -1) {
+            // 22信息流横版广告图 182超话卡片
+            if (![22, 118, 182].includes(cardType)) {
               if (!isAd(group.mblog)) {
                 // 商品橱窗
                 if (group.mblog?.common_struct) {
@@ -556,7 +556,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     }
     if (obj.trend?.titles) {
       let title = obj.trend.titles.title;
-      if (["博主好物种草", "相关推荐"].indexOf(title) !== -1) {
+      if (["博主好物种草", "相关推荐"].includes(title)) {
         delete obj.trend;
       }
     }
