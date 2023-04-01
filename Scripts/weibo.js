@@ -1,4 +1,4 @@
-// 2023-04-01 23:18
+// 2023-04-02 00:22
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -163,12 +163,13 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (item.data?.vip_button) {
               delete item.data.vip_button;
             }
-            // 6为你推荐更多精彩内容
+            // 6为你推荐更多精彩内容 15过滤提示
             if (
               item?.adType === "相关内容" ||
               item?.adType === "相关评论" ||
               item?.adType === "推荐" ||
-              item?.type === 6
+              item?.type === 6 ||
+              item?.type === 15
             ) {
               continue;
             }
