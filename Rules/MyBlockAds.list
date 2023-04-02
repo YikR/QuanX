@@ -1,4 +1,4 @@
-# 2023-04-01 15:40
+# 2023-04-02 17:15
 
 # ======= A ======= #
 # 安全浏览限制解除
@@ -8,7 +8,8 @@ HOST, safebrowsing.g.applimg.com, REJECT
 HOST, safebrowsing.googleapis.com, REJECT
 HOST, safebrowsing.urlsec.qq.com, REJECT
 HOST, token.safebrowsing.apple, REJECT
-HOST, u3.ucweb.com, REJECT
+HOST, vs6.bj2ct.u3.ucweb.com, REJECT
+HOST-SUFFIX, u3.ucweb.com, REJECT
 
 # ======= C ======= #
 # Clue 智库
