@@ -1,4 +1,4 @@
-// 2023-04-02 00:22
+// 2023-04-02 15:10
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -173,6 +173,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             ) {
               continue;
             }
+            fixPos(item.data);
             newItems.push(item);
           }
         }
@@ -211,6 +212,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             if (item?.vip_button) {
               delete item.vip_button;
             }
+            fixPos(item);
             newItems.push(item);
           }
         }
@@ -225,9 +227,15 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             // 头像挂件,关注按钮
             removeAvatar(item);
           }
+          fixPos(item);
           newItems.push(item);
         }
         obj.comments = newItems;
+      }
+    }
+    function fixPos(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        arr[i].position = i + 1;
       }
     }
   } else if (url.includes("/2/container/asyn")) {
@@ -634,16 +642,19 @@ if (url.includes("/interface/sdk/sdkad.php")) {
 // 判断信息流
 function isAd(data) {
   if (data) {
-    if (data.mblogtypename === "广告") {
+    if (data?.mblogtypename === "广告") {
       return true;
     }
-    if (data.mblogtypename === "热推") {
+    if (data?.mblogtypename === "热推") {
       return true;
     }
-    if (data.promotion?.type === "ad") {
+    if (data?.promotion?.type === "ad") {
       return true;
     }
-    if (data.readtimetype === "adMblog") {
+    if (data?.readtimetype === "adMblog") {
+      return true;
+    }
+    if (data?.readtimetype?.includes("_recommend")) {
       return true;
     }
   }
