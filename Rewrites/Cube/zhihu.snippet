@@ -1,5 +1,5 @@
 # ======= 知乎 ======= #
-# 2023-03-27 09:02
+# 2023-04-03 07:25
 
 # 首页 悬浮图标,顶部横幅,开屏广告,关注页推荐,推荐信息流,热榜信息流,热榜直播,回答底部卡片
 ^https:\/\/api\.zhihu\.com\/commercial_api\/app_float_layer$ url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/zhihu.js
@@ -18,7 +18,7 @@
 
 # 搜索页 关键词,猜你想搜
 ^https:\/\/api\.zhihu\.com\/feed\/render\/revisit\/current_reading$ url reject-dict
-^https:\/\/api\.zhihu\.com\/search\/preset_words\? url reject-dict
+^https:\/\/api\.zhihu\.com\/search\/preset_words\?? url reject-dict
 ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? url response-body "recommend_queries":\{.+\} response-body "recommend_queries":{}
 ^https:\/\/www\.zhihu\.com\/api\/v4\/search\/related_queries\/(answer|article)\/\d+ url reject-dict
 
