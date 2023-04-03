@@ -1,4 +1,4 @@
-# 2023-04-02 17:30
+# 2023-04-03 15:08
 
 # ======= A ======= #
 # 安全浏览限制解除
@@ -21,6 +21,8 @@ HOST, md-i-s.apptimize.com, REJECT
 HOST, images.ctfassets.net, REJECT
 
 # ======= F ======= #
+# Flurry
+HOST, data.flurry.com, REJECT
 # Foreca & Google
 HOST, googleads.g.doubleclick-cn.net, REJECT
 HOST, googleads.g.doubleclick.net, REJECT
