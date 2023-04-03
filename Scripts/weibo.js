@@ -1,4 +1,4 @@
-// 2023-04-02 18:30
+// 2023-04-03 08:45
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -635,9 +635,6 @@ function isAd(data) {
       return true;
     }
     if (data?.promotion?.type === "ad") {
-      return true;
-    }
-    if (data?.readtimetype === "adMblog") {
       return true;
     }
     if (data?.readtimetype?.includes("_recommend")) {
