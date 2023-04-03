@@ -1,4 +1,4 @@
-// 2023-04-03 08:45
+// 2023-04-03 09:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -165,6 +165,13 @@ if (url.includes("/interface/sdk/sdkad.php")) {
             }
             // 6为你推荐更多精彩内容 15过滤提示
             if (item?.type === 6 || item?.type === 15) {
+              continue;
+            }
+            if (
+              item?.adType === "相关内容" ||
+              item?.adType === "相关评论" ||
+              item?.adType === "推荐"
+            ) {
               continue;
             }
             newItems.push(item);
@@ -635,9 +642,6 @@ function isAd(data) {
       return true;
     }
     if (data?.promotion?.type === "ad") {
-      return true;
-    }
-    if (data?.readtimetype?.includes("_recommend")) {
       return true;
     }
   }
