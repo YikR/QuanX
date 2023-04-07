@@ -2,14 +2,14 @@
 > 应用名称：墨鱼自用高德地图去广告脚本
 > 脚本作者：@ddgksf2013
 > 微信账号：墨鱼手记
-> 更新时间：2022-02-18
+> 更新时间：2022-04-07
 > 通知频道：https://t.me/ddgksf2021
 > 贡献投稿：https://t.me/ddgksf2013_bot
 > 问题反馈：ddgksf2013@163.com
 > 特别提醒：如需转载请注明出处，谢谢合作！
 ***********************************************/
 
-const version = "V1.0.26";
+const version = "V1.0.27";
 
 var obj = JSON.parse($response.body);
 if (-1 != $request.url.indexOf("valueadded/alimama/splash_screen")) {
@@ -52,7 +52,8 @@ else if (-1 != $request.url.indexOf("ws/shield/frogserver/aocs")) {
   for (let t of [
     "gd_notch_logo",
     "home_business_position_config",
-    "his_input_tip"
+    "his_input_tip",
+    "operation_layer"
   ])
     obj.data?.[t] && (obj.data[t] = { status: 1, version: "", value: "" });
   $done({ body: JSON.stringify(obj) });
