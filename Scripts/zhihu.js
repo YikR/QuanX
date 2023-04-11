@@ -1,4 +1,4 @@
-// 2023-04-11 11:18
+// 2023-04-11 12:00
 
 if (!$response.body) $done({});
 const url = $request.url;
@@ -117,10 +117,6 @@ if (url.includes("/appview/v3/zhmore")) {
         }
       });
     }
-  } else if (url.includes("/root/window")) {
-    if (obj.guide) {
-      obj.guide = {};
-    }
   } else if (url.includes("/topstory/recommend")) {
     // 推荐信息流
     if (obj.data) {
@@ -181,10 +177,10 @@ if (url.includes("/appview/v3/zhmore")) {
   } else if (url.includes("/v4/questions") || url.includes("/questions")) {
     // 问题回答列表广告
     if (obj.data.ad_info) {
-      obj.data.ad_info = {};
+      delete obj.data.ad_info;
     }
     if (obj.ad_info) {
-      obj.ad_info = {};
+      delete obj.ad_info;
     }
   }
   $done({ body: JSON.stringify(obj) });
