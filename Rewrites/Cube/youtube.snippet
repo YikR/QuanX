@@ -1,5 +1,5 @@
 # ======= YouTube ======= #
-# 2023-02-20 11:10
+# 2023-04-11 14:42
 
 # ⚠️⚠️
 # Quantumult X 必须在 [general] 部分加入以下代码: udp_drop_list=443
@@ -7,8 +7,9 @@
 # 开启画中画,后台播放
 ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/account\/get_setting\?key url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/youtube.js
 
-# 首页 瀑布流,上传按钮,短视频
+# 首页 瀑布流,上传按钮,短视频,反馈
 ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|guide|reel\/reel_watch_sequence)\?key url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/youtube.js
+^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/feedback\?key url reject-200
 
 # 播放页 插播广告,贴片广告
 ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(next|player)\?key url script-response-body https://raw.githubusercontent.com/RuCu6/QuanX/main/Scripts/youtube.js
