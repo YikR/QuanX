@@ -1,4 +1,4 @@
-// 2023-04-11 15:05
+// 2023-04-12 21:25
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -614,7 +614,10 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         (t) => t.title !== "广场"
       );
     }
-  } else if (url.includes("/v1/ad/preload")) {
+  } else if (
+    url.includes("/v1/ad/preload") ||
+    url.includes("/v2\/ad\/rea")
+  ) {
     // 开屏广告
     if (obj.ads) {
       for (let item of obj.ads) {
