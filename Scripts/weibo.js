@@ -1,4 +1,4 @@
-// 2023-04-13 08:22
+// 2023-04-13 08:50
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -614,10 +614,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         (t) => t.title !== "广场"
       );
     }
-  } else if (
-    url.includes("/v1/ad/preload") ||
-    url.includes("/v2/ad/realtime")
-  ) {
+  } else if (url.includes("/v1/ad/preload")) {
     // 开屏广告
     if (obj.ads) {
       for (let item of obj.ads) {
@@ -625,6 +622,14 @@ if (url.includes("/interface/sdk/sdkad.php")) {
         item.daily_display_cnt = 50; // total_display_cnt: 50
         item.display_duration = 0;
         item.start_time = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
+      }
+      if (obj.ads.creatives) {
+        for (let item of obj.ads.creatives) {
+          item.end_time = 2209046399; // Unix 时间戳 2040-01-01 23:59:59
+          item.daily_display_cnt = 50; // total_display_cnt: 50
+          item.display_duration = 0;
+          item.start_time = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
+        }
       }
     }
   } else if (url.includes("/wbapplua/wbpullad.lua")) {
