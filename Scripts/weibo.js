@@ -1,4 +1,4 @@
-// 2023-04-12 21:25
+// 2023-04-13 08:22
 
 const url = $request.url;
 if (!$response.body) $done({});
@@ -616,7 +616,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     }
   } else if (
     url.includes("/v1/ad/preload") ||
-    url.includes("/v2\/ad\/rea")
+    url.includes("/v2/ad/realtime")
   ) {
     // 开屏广告
     if (obj.ads) {
@@ -632,7 +632,7 @@ if (url.includes("/interface/sdk/sdkad.php")) {
     if (obj.cached_ad.ads) {
       for (let item of obj.cached_ad.ads) {
         item.start_date = 2208960000; // Unix 时间戳 2040-01-01 00:00:00
-        item.show_count = 0;
+        item.show_count = 50;
         item.duration = 0; // 60 * 60 * 24 * 365 = 31536000
         item.end_date = 2209046399; // Unix 时间戳 2040-01-01 23:59:59
       }
